@@ -8,7 +8,7 @@ import java.util.List;
 //
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOExceptiom;
+import java.io.IOException;
 
 /*
     Darimar Caceres
@@ -29,14 +29,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Library library = new Library();
+        //Library library = new Library();
         Scanner file = new Scanner (System.in);
 
-        System.out.print("Hello and welcome!\nWhat would you like to do: ");
+        System.out.print("\nHello and welcome!\n\nWhat would you like to do: \n1");
 
-        /* PLAN TO MOVE THESE TO LIBRARY
-        
         boolean exit = false;
+        
+        /* PLAN TO MOVE THESE TO LIBRARY 
+        this will be the database
+
         int count = 0;
 
         List<String> books = new ArrayList<String>();
