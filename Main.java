@@ -29,7 +29,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Library library = new Library();
+        //Library library = new Library();
         Scanner scanFile = new Scanner (System.in);
 
         System.out.print("\nHello and welcome!\n\nWhat would you like to do: \n1");
@@ -54,7 +54,6 @@ public class Main {
                                 "   4. TITLE (book removal)\n" +
                                 "5. Check-out book\n" +
                                 "6. Check-in book\n" +
-                                
                                 "Enter '0' to exit.\n\n" +
                                 "Option: ");
 
@@ -70,13 +69,13 @@ public class Main {
 
                         System.out.print("What is the file name of books you are adding to the collection?\n");
                         
-                        String file = scanFile.nextline();
+                        String file = scanFile.nextLine();
 
                         try (BufferedReader b = new BufferedReader(new FileReader(file))) {
                             
                             String line;
 
-                            while ((line = b.readline()) != null) {
+                            while ((line = b.readLine()) != null) {
 
                                 String[] book = line.split(",");
 
@@ -87,7 +86,7 @@ public class Main {
                                     String title = book[1];
                                     String author = book[2];
 
-                                    library.addBook(new Book(barcodeID, title, author));
+                                    //library.addBook(new Book(barcodeID, title, author));
 
                                 } else {
 
