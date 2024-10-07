@@ -3,8 +3,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
 //
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -29,20 +27,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Library library = new Library();
+        Library library = new Library();
         Scanner scanFile = new Scanner (System.in);
 
         System.out.print("\nHello and welcome!\n\nWhat would you like to do: \n1");
 
         boolean exit = false;
-        
-        /* PLAN TO MOVE THESE TO LIBRARY 
-        this will be the database
-
-        int count = 0;
-
-        List<String> books = new ArrayList<String>();
-        */
 
         while (!exit) {
 
@@ -73,6 +63,8 @@ public class Main {
 
                         try (BufferedReader b = new BufferedReader(new FileReader(file))) {
                             
+                            System.out.println("Adding books to the collection...\n");
+                            
                             String line;
 
                             while ((line = b.readLine()) != null) {
@@ -86,7 +78,7 @@ public class Main {
                                     String title = book[1];
                                     String author = book[2];
 
-                                    //library.addBook(new Book(barcodeID, title, author));
+                                    library.addBook(new Book(barcodeID, title, author));
 
                                 } else {
 
@@ -99,18 +91,8 @@ public class Main {
                             System.out.println("Error! Error message: " + e.getMessage() + "\n");
                         }
                         
-                        /* THIS ALL WILL BE MOVED TO LIBRARY
-                        new File("/Users/DariTheDev/IdeaProjects/LMS/src/books.txt")
-                        //THIS IS SHORT MESSAGE THAT PRINTING IS TAKING PLACE
-                        System.out.print("Adding books to the collection...\n");
+                        library.printDatabase();
 
-                        while (file.hasNextLine()) {
-
-                            String book = file.nextLine();
-                            books.add(count, book);
-                            System.out.printf("Added: " + books.get(count) + "\n");
-                            count++;
-                        }*/
                         break;
                     // case 2 will list books from the library collection "database"
                     case 2: 

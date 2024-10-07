@@ -20,29 +20,29 @@ public class Book {
 
     public Book(String barcodeID, String title, String author) {
         
-        this.barcodeID = barcodeId;
+        this.barcodeID = barcodeID;
         this.title = title;
         this.author = author;
         this.checkOut = false;
     }
 
     public String getBarcodeID() {
-        return barcodeId;
+        return barcodeID;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String author() {
+    public String getAuthor() {
         return author;
     }
 
     public void checkOut() {
-        return true;
+        checkOut = true;
     }
 
     public void checkIn() {
-        return false;
+        checkOut = false;
     }
 }
