@@ -9,7 +9,10 @@ import java.time.temporal.ChronoUnit;
     Software Development I - CEN 3024C - 14320
     10.06.24
 
-    The class name is 'Library' and the function of this class is to ... COMPLETE THISSSS
+    The class name is 'Library' and the function of this class is to run the 
+    activities of the library such as create new library "database," add books, 
+    print the current books in the library "database," remove book by barcode ID
+    or title, and check out or check in book. 
 
     The overall program objective is to manage a simple console based library 
     management system where the end user(s) can add, remove, and see their 
@@ -47,7 +50,7 @@ public class Library {
         }
     }
 
-    // Removes chosen book from library "database"
+    // Removes chosen book from library "database" using book barcode
     public void removeBookBarcode(String barcodeID) {
 
         Iterator<Book> it = books.iterator();
@@ -70,7 +73,7 @@ public class Library {
             return;
         }
     }
-
+    // Removes chosen book from library "database" using book title
     public void removeBookTitle(String title) {
 
         Iterator<Book> it = books.iterator();
@@ -93,7 +96,7 @@ public class Library {
             return;
         }
     }
-
+    // Checks chosen book out from library "database"
     public void checkOutBook(String title) {
 
         for (int i = 0; i < books.size(); i++) {
@@ -120,6 +123,7 @@ public class Library {
         printDatabase();
     }
 
+    // Checks chosen book in from library "database"
     public void checkInBook(String title) {
 
         for (int i = 0; i < books.size(); i++) {
