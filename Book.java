@@ -4,7 +4,7 @@
     10.06.24
 
     The class name is 'Book' and the function of this class is to create book objects
-    with stringa for Barcode ID, title, and author, and a boolean for checkOut. The
+    with strings for Barcode ID, title, and author, and a boolean for checkOut. The
     Book class has a public object method that assigns the barcode id, title, author, and check
     out boolean. The following functions three return their corresponding barcode ID, title, and 
     author name. While the boolean getCheckOut function returns a boolean value of true or false
