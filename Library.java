@@ -31,8 +31,6 @@ public class Library {
 
         public void printDatabase() {
 
-            System.out.println("Loading books in Library database... \n");
-            System.out.println("Books currently in Library database: \n");
             System.out.println("Barcode ID: Book Title, Author\n" +
                                 "-----------------------------------------");
             
@@ -60,4 +58,30 @@ public class Library {
                             count++;
                         }*/
 
+                       /*  MOVE ALL THIS TO LIBRARY
+                        System.out.print("Enter the id of the book you want deleted.\n");
+
+                        int id_choice = option.nextInt();
+
+                        // iterates through the library collection of books
+                        // book is removed if book index matches users option choice
+                        for (int i = 0; i < books.size(); i++) {
+                            int num = id_choice - 1;
+                             if (Objects.equals(books.get(num), books.get(i))) {
+                                 System.out.printf(books.get(num) + " was removed.\n");
+                                 books.remove(num);
+                             }
+                        }*/
+
+/* MOVE ALL THIS TO LIBRARY CLASS
+                    //THIS CASE REMOVES BOOK BASE ON BARCODE NUMBER
+                        System.out.print("Books currently in your collection: \n");
+
+                        int counter = 0;
+
+                        while (counter < books.size() ) {
+
+                            System.out.printf(books.get(counter) + "\n");
+                            counter++;
+                        }*/
 }
