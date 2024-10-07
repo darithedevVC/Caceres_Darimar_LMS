@@ -1,7 +1,7 @@
 # LMS_application
     Darimar Caceres
     Software Development I - CEN 3024C - 14320
-   10.06.24
+    10.06.24
 
     Updated program with 'Main', 'Book' and "library classes. The function of the 'Main' class is to prompt the 
     user with six choices in an endless while loop until the user chooses '0' to exit. The six choices corresponds 
