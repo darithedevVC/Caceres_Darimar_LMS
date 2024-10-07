@@ -38,6 +38,10 @@ public class Book {
         return author;
     }
 
+    public Boolean getCheckOut() {
+        return checkOut;
+    }
+
     public void checkOut() {
         checkOut = true;
     }

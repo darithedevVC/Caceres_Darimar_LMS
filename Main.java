@@ -126,9 +126,23 @@ public class Main {
                     // case 5 will check-out books using ? number from the library collection
                     case 5: 
 
+                        System.out.println("CHECK-OUT BOOK: What is the title of the book? \n");
+                        System.out.println("TITLE: ");
+                        
+                        title = scanner.nextLine();
+
+                        library.checkOutBook(title);
+
                         break;
                     // case 6 will check-in books using ? number from the library collection
                     case 6: 
+
+                        System.out.println("CHECK-IN BOOK: What is the title of the book? \n");
+                        System.out.println("TITLE: ");
+                        
+                        title = scanner.nextLine();
+
+                        library.checkInBook(title);
 
                         break;
                     // exits program
@@ -144,7 +158,7 @@ public class Main {
                         System.out.print("Error! Please choose a valid option.\n");
                 }
             } catch (Exception e) {
-                
+
                 System.out.print("Error! not a valid option.\n");
             }
         }
