@@ -96,6 +96,8 @@ public class Main {
                         System.out.println("Loading books in Library database... \n");
                         System.out.println("Books currently in Library database: \n");
 
+                        library.printDatabase();
+
                         break;
                     //case 3 will remove books using barcode number from the library collection
                     case 3: 
