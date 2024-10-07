@@ -136,6 +136,8 @@ public class Library {
 
                     book.checkIn();
 
+                    LocalDate dueDate = null;
+
                     System.out.println(title + " is checked in.\n");
 
                 } else {
