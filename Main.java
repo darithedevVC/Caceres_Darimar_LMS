@@ -24,6 +24,7 @@ public class Main {
 
         Library library = new Library();
         Scanner scanFile = new Scanner (System.in);
+        Scanner scanner = new Scanner (System.in);
 
         System.out.print("\nHello and welcome!\n\nWhat would you like to do: \n1");
 
@@ -53,6 +54,7 @@ public class Main {
                     case 1:
 
                         System.out.print("What is the file name of books you are adding to the collection?\n");
+                        System.out.print("FILE NAME: ");
                         
                         String file = scanFile.nextLine();
 
@@ -101,10 +103,24 @@ public class Main {
                         break;
                     //case 3 will remove books using barcode number from the library collection
                     case 3: 
-                    
+
+                        System.out.println("REMOVE BOOK: What is the barcode ID of the book? \n");
+                        System.out.println("BARCODE ID: ");
+
+                        String barcodeID = scanner.nextLine();
+
+                        library.removeBookBarcode(barcodeID);
+
                         break;
                     // case 4 will remove books using the title from the library collection
-                    case 4: //THIS CASE REMOVES BOOK BASE ON TITLE
+                    case 4:
+
+                        System.out.println("REMOVE BOOK: What is the title of the book? \n");
+                        System.out.println("TITLE: ");
+                        
+                        String title = scanner.nextLine();
+
+                        library.removeBookTitle(title);
 
                         break;
                     // case 5 will check-out books using ? number from the library collection
@@ -117,13 +133,18 @@ public class Main {
                         break;
                     // exits program
                     case 0:
+
                         System.out.print("Exiting.\n");
+
                         exit = true;
+
                         break;
                     default:
+
                         System.out.print("Error! Please choose a valid option.\n");
                 }
             } catch (Exception e) {
+                
                 System.out.print("Error! not a valid option.\n");
             }
         }

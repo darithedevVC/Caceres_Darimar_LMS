@@ -19,25 +19,74 @@ public class Library {
         // This list is the "database" holding the library book collection
         private List<Book> books;
 
+        // Creates a new "database" for books in library collection
         public Library() {
 
             books = new ArrayList<>();
         }
 
+        // Adds book object to library "database"
         public void addBook(Book book) {
 
             books.add(book);
         }
 
+        // Prints the current library "database" to console
         public void printDatabase() {
 
             System.out.println("Barcode ID: Book Title, Author\n" +
                                 "-----------------------------------------");
             
             for (int i = 0; i < books.size(); i++) {
+
                 Book book = books.get(i);
-                //System.out.println(book + "\n");
+   
                 System.out.println(book.getBarcodeID() + ": " + book.getTitle() + ", " + book.getAuthor() + "\n");
+            }
+        }
+
+        // Removes chosen book from library "database"
+        public void removeBookBarcode(String barcodeID) {
+
+            Iterator<Book> it = books.iterator();
+
+            while (it.hasNext()) {
+
+                Book book = it.next();
+
+                System.out.println(book.getBarcodeID() + " == " + barcodeID); //TESTING
+                if (book.getBarcodeID().equals(barcodeID)) {
+                //if ((book.getBarcodeID() != null) && (book.getBarcodeID() == barcodeID)) {
+                    
+                    it.remove();
+
+                    System.out.println(barcodeID + " has been removed.\n");
+                } else {
+
+                    System.out.println("Error! " + barcodeID + " is not found.\n");
+                }
+                return;
+            }
+        }
+
+        public void removeBookTitle(String title) {
+
+            Iterator<Book> it = books.iterator();
+
+            while (it.hasNext()) {
+
+                Book book = it.next();
+
+                if (book.getTitle().equals(title)) {
+                    
+                    it.remove();
+
+                    System.out.println(title + " has been removed.\n");
+                } else {
+
+                    System.out.println("Error! " + title + " is not found.\n");
+                }
+                return;
             }
         }
 
