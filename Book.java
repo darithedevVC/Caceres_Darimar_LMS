@@ -15,12 +15,15 @@
     collection of books by importing the collection of books in txt files.
 */
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 public class Book {
 
     private String barcodeID;
     private String title;
     private String author;
-    private boolean checkOut;
+    private String checkOut;
 
     // This object method gets the barcodeID, book title, and book author name
     // then returns the barcode ID, title, and author, while also returning 
@@ -30,7 +33,7 @@ public class Book {
         this.barcodeID = barcodeID;
         this.title = title;
         this.author = author;
-        this.checkOut = false;
+        this.checkOut = null;
     }
 
     public String getBarcodeID() {
@@ -45,15 +48,19 @@ public class Book {
         return author;
     }
 
-    public Boolean getCheckOut() {
+    public String getCheckOut() {
         return checkOut;
     }
 
-    public void checkOut() {
-        checkOut = true;
+    public String checkOut() {
+
+        LocalDate dueDate = LocalDate.now().plus(4, ChronoUnit.WEEKS);
+
+        return checkOut = dueDate.toString();
     }
 
-    public void checkIn() {
-        checkOut = false;
+    public String checkIn() {
+
+        return checkOut = null;
     }
 }

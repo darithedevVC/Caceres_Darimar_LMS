@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 /* 
     Darimar Caceres
@@ -39,14 +37,14 @@ public class Library {
     // Prints the current library "database" to console
     public void printDatabase() {
 
-        System.out.println("Barcode ID: Book Title, Author\n" +
+        System.out.println("Barcode ID: Book Title, Author, Due Date\n" +
                             "-----------------------------------------");
             
         for (int i = 0; i < books.size(); i++) {
 
             Book book = books.get(i);
    
-            System.out.println(book.getBarcodeID() + ": " + book.getTitle() + ", " + book.getAuthor() + "\n");
+            System.out.println(book.getBarcodeID() + ": " + book.getTitle() + ", " + book.getAuthor() + ", " + book.getCheckOut() + "\n");
         }
     }
 
@@ -63,15 +61,16 @@ public class Library {
                     
                 it.remove();
 
-                System.out.println(barcodeID + " has been removed.\n");
+                System.out.println("Book with barcode #" + barcodeID + " has been removed.\n");
 
                 printDatabase();
-            } else {
 
-                System.out.println("Error! " + barcodeID + " is not found.\n");
+                return;
+
             }
-            return;
         }
+
+        System.out.println("Error! Book barcode #" + barcodeID + " is not found.\n");
     }
     // Removes chosen book from library "database" using book title
     public void removeBookTitle(String title) {
@@ -89,12 +88,13 @@ public class Library {
                 System.out.println(title + " has been removed.\n");
 
                 printDatabase();
-            } else {
 
-                System.out.println("Error! " + title + " is not found.\n");
+                return;
+
             }
-            return;
         }
+
+        System.out.println("Error! " + title + " is not found.\n");
     }
     // Checks chosen book out from library "database"
     public void checkOutBook(String title) {
@@ -105,17 +105,17 @@ public class Library {
 
             if (book.getTitle().equalsIgnoreCase(title)) {
 
-                if (!book.getCheckOut()) {
+                if (book.getCheckOut() == null) {
 
-                    book.checkOut();
-                        
-                    LocalDate dueDate = LocalDate.now().plus(4, ChronoUnit.WEEKS);
+                    String due = book.checkOut();
 
-                    System.out.println(title + " is checked out. Due date: " + dueDate + "\n");
+                    System.out.println(title + " is checked out. Due date: " + due + "\n");
 
                 } else {
 
-                    System.out.println("Error! " + title + " cannot be checked out or is already checked out.\n");
+                    String due = book.checkOut();
+
+                    System.out.println("Error! " + title + " cannot be checked out or is already checked out. Due date: " + due + "\n");
                 }
             }
         }
@@ -132,21 +132,37 @@ public class Library {
 
             if (book.getTitle().equalsIgnoreCase(title)) {
 
-                if (book.getCheckOut()) {
+                if (book.getCheckOut() != null) {
 
-                    book.checkIn();
+                    String due = book.checkIn();
 
-                    LocalDate dueDate = null;
-
-                    System.out.println(title + " is checked in.\n");
+                    System.out.println(title + " is checked in. Due date: " + due + "\n");
 
                 } else {
 
-                    System.out.println("Error! " + title + " cannot be checked in or is already checked in.\n");
+                    String due = book.checkIn();
+
+                    System.out.println("Error! " + title + " cannot be checked in or is already checked in. Due date: " + due + "\n");
                 }
             }
         }
 
         printDatabase();
+    }
+
+    // Added getter for unit testing
+    public String getBook(String barcodeID, String title) {
+
+        for (int i = 0; i < books.size(); i++) {
+
+            if ((barcodeID == null) && books.get(i).getTitle().equals(title)) {
+
+                return books.get(i).getTitle();
+            } else if ((title == null) && books.get(i).getBarcodeID().equals(barcodeID)) {
+
+                return books.get(i).getBarcodeID();
+            }
+        }
+        return ""; // Returns "" string because error is thrown when null
     }
 }
