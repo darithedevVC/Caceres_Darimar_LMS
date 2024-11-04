@@ -1,6 +1,10 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
+import java.util.Scanner;
 
 /* 
     Darimar Caceres
@@ -33,7 +37,41 @@ public class Library {
 
         books.add(book);
     }
+    public Library addBooks(String fileName) {
+        Library library = new Library();
 
+        try (
+                BufferedReader b = new BufferedReader(new FileReader(fileName))) {
+
+                    String line;
+
+                    while ((line = b.readLine()) != null) {
+
+                        String[] book = line.split(",");
+
+                        // If statement checks for 3 elements (Book Barcode, Title, and Author) per line
+                        if (book.length == 3) {
+
+                            String barcodeID = book[0];
+                            String title = book[1];
+                            String author = book[2];
+
+                            library.addBook(new Book(barcodeID, title, author));
+
+                        } else {
+
+                            System.out.println("File has invalid book format (barcodeID, Book title, Book author). Try again!\n");
+                        }
+                    }
+
+                    library.printDatabase();
+
+                } catch (IOException e) {
+
+                    System.out.println("Error! Error message: " + e.getMessage() + "\n");
+        }
+        return library;
+    }
     // Prints the current library "database" to console
     public void printDatabase() {
 

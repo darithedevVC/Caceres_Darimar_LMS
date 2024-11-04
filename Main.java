@@ -25,13 +25,13 @@ public class Main {
         Scanner scanFile = new Scanner (System.in);
         Scanner scanner = new Scanner (System.in);
 
-        System.out.print("\nHello and welcome!\n\nWhat would you like to do: \n1");
+        // System.out.print("\nHello and welcome!\n\nWhat would you like to do: \n1");
 
         boolean exit = false;
 
         while (!exit) {
-
-            System.out.print("\n***(To select one please enter the corresponding number i.e. 1,2,3 etc)***\n\n");
+            // Commented out because using GUI
+            /*System.out.print("\n***(To select one please enter the corresponding number i.e. 1,2,3 etc)***\n\n");
             System.out.print(   "1. Add new books to the collection using file name.\n" +
                                 "2. List all books currently in the collection\n" +
                                 "   Remove book from the collection using:\n" +
@@ -41,7 +41,7 @@ public class Main {
                                 "6. Check-in book\n" +
                                 "Enter '0' to exit.\n\n" +
                                 "Option: ");
-
+            */
             Scanner option = new Scanner(System.in);
 
             try {
@@ -52,10 +52,10 @@ public class Main {
                     // case 1 will ask user for file name and add books to the library database
                     case 1:
 
-                        System.out.print("What is the file name of books you are adding to the collection?\n");
-                        System.out.print("FILE NAME: ");
+                        // System.out.print("What is the file name of books you are adding to the collection?\n");
+                        // System.out.print("FILE NAME: ");
                         
-                        String file = scanFile.nextLine();
+                        /*String file = scanFile.nextLine();
 
                         try (BufferedReader b = new BufferedReader(new FileReader(file))) {
                             
@@ -89,7 +89,7 @@ public class Main {
                         } catch (IOException e) {
                             
                             System.out.println("Error! Error message: " + e.getMessage() + "\n");
-                        }
+                        }*/
                         break;
                     // case 2 will list books from the library collection "database"
                     case 2: 
