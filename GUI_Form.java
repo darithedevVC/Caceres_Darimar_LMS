@@ -2,7 +2,20 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.ArrayList;
+
+/*
+    Darimar Caceres
+    Software Development I - CEN 3024C - 14320
+    11.03.24
+
+    The function of the 'GUI_Form' class is to create a GUI Form that the  user can
+    interact with. There are seven choices the user can choose from. The seven choices
+    corresponds to maintaining and accessing this simple Library Management Software.
+
+    The overall program objective is to manage a simple console based library
+    management system where the end user(s) can add, remove, and see their
+    collection of books by importing the collection of books in txt files.
+*/
 
 public class GUI_Form extends JFrame {
 
@@ -23,6 +36,7 @@ public class GUI_Form extends JFrame {
     private JButton checkInButton;
     private JButton removeTitleButton;
 
+    // This form is the GUI the user will see
     public GUI_Form () {
 
         setContentPane(mainPanel);
@@ -32,6 +46,7 @@ public class GUI_Form extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
+        // Adds the text file to the 'database' when button is clicked
         addFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,6 +63,7 @@ public class GUI_Form extends JFrame {
             }
         });
 
+        // Displays the books in the 'database' in a new window when button is clicked
         displayDBButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,6 +71,7 @@ public class GUI_Form extends JFrame {
             }
         });
 
+        // Removes a book from the 'database' using the barcode ID number when button is clicked
         removeBarcodeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,6 +86,7 @@ public class GUI_Form extends JFrame {
             }
         });
 
+        // Removes a book from the 'database' using the book title when button is clicked
         removeTitleButton.addActionListener(new ActionListener() {
 
             @Override
@@ -84,6 +102,7 @@ public class GUI_Form extends JFrame {
             }
         });
 
+        // Checks out a book from the 'database' using the book title when button is clicked
         checkOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -95,6 +114,7 @@ public class GUI_Form extends JFrame {
             }
         });
 
+        // Checks in a book from the 'database' using the book title when button is clicked
         checkInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,6 +125,7 @@ public class GUI_Form extends JFrame {
             }
         });
 
+        // Exits from program when button is clicked
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -113,6 +134,7 @@ public class GUI_Form extends JFrame {
         });
     }
 
+    // Creates the new pop-up window when display database button is clicked
     private void displayDatabaseWindow() {
         books = library.booksGUIDisplay();
 
@@ -132,6 +154,7 @@ public class GUI_Form extends JFrame {
         frame.setVisible(true);
     }
 
+    // Main
     public static void main(String[] args) {
         new GUI_Form();
 
