@@ -25,6 +25,7 @@ public class Library {
 
     // This list is the "database" holding the library book collection
     private List<Book> books;
+    boolean error = false;
 
     // Creates a new "database" for books in library collection
     public Library() {
@@ -67,7 +68,7 @@ public class Library {
                     library.printDatabase();
 
                 } catch (IOException e) {
-
+                    error = true;
                     System.out.println("Error! Error message: " + e.getMessage() + "\n");
         }
         return library;
@@ -192,7 +193,6 @@ public class Library {
     public String getBook(String barcodeID, String title) {
 
         for (int i = 0; i < books.size(); i++) {
-
             if ((barcodeID == null) && books.get(i).getTitle().equals(title)) {
 
                 return books.get(i).getTitle();
@@ -202,5 +202,9 @@ public class Library {
             }
         }
         return ""; // Returns "" string because error is thrown when null
+    }
+
+    public List<Book> booksGUIDisplay() {
+        return books;
     }
 }
