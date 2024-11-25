@@ -1,6 +1,8 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 import java.util.List;
 
 /*
@@ -36,6 +38,11 @@ public class GUI_Form extends JFrame {
     private JButton checkInButton;
     private JButton removeTitleButton;
 
+    // Details to log into Database
+    private static final String DatabaseMySQL = "jdbc:mysql://localhost:3306/SimpleLibrary";
+    private static final String USER = "root";
+    private static final String PW = "Password$";
+
     // This form is the GUI the user will see
     public GUI_Form () {
 
@@ -51,9 +58,6 @@ public class GUI_Form extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 library = new Library();
-
-                String fileName = fileText.getText();
-                library = library.addBooks(fileName);
 
                 if(!library.error) {
                     JOptionPane.showMessageDialog(GUI_Form.this, "Added Books to library.\n");
@@ -137,6 +141,22 @@ public class GUI_Form extends JFrame {
     // Creates the new pop-up window when display database button is clicked
     private void displayDatabaseWindow() {
         books = library.booksGUIDisplay();
+
+        try (Connection c = DriverManager.getConnection(DatabaseMySQL, USER, PW)) {
+            String mySQL = "SELECT * FROM SimpleLibrary.Books";
+
+            try(PreparedStatement s = c.prepareStatement(mySQL)) {
+                Label idField = new Label();
+                s.setInt(1, Integer.parseInt(idField.getText()));
+                try (ResultSet r = s.executeQuery()) {
+                    if (r.next()) {
+
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         JFrame frame = new JFrame("Library Books Database");
 
